@@ -48,11 +48,7 @@ public class RecSysServer {
         String dataDir = System.getProperty("user.dir") + "/src/main/resources/webroot";
                 
         System.out.printf("User dir: %s%n", dataDir);
-                
-        //set index.html as the root page
-        URI webRootUri = URI.create(webRootLocation.toURI().toASCIIString().replaceFirst("/index.html$","/"));
-        System.out.printf("Web Root URI: %s%n", webRootUri);
-                
+               
         //load all the data to DataManager
         DataManager.getInstance().loadData(dataDir + "/sampledata/movies.csv",
                                dataDir + "/sampledata/links.csv",dataDir + "/sampledata/ratings.csv",
