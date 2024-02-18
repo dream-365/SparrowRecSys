@@ -44,14 +44,22 @@ public class RecSysServer {
 
         //set index.html as the root page
         URI webRootUri = URI.create(webRootLocation.toURI().toASCIIString().replaceFirst("/index.html$","/"));
-        System.out.printf("Web Root URI: %s%n", webRootUri.getPath());
 
+        String dataDir = System.getProperty("user.dir") + "/src/main/resources/webroot";
+                
+        System.out.printf("User dir: %s%n", dataDir);
+                
+        //set index.html as the root page
+        URI webRootUri = URI.create(webRootLocation.toURI().toASCIIString().replaceFirst("/index.html$","/"));
+        System.out.printf("Web Root URI: %s%n", webRootUri);
+                
         //load all the data to DataManager
-        DataManager.getInstance().loadData(webRootUri.getPath() + "sampledata/movies.csv",
-                webRootUri.getPath() + "sampledata/links.csv",webRootUri.getPath() + "sampledata/ratings.csv",
-                webRootUri.getPath() + "modeldata/item2vecEmb.csv",
-                webRootUri.getPath() + "modeldata/userEmb.csv",
-                "i2vEmb", "uEmb");
+        DataManager.getInstance().loadData(dataDir + "/sampledata/movies.csv",
+                               dataDir + "/sampledata/links.csv",dataDir + "/sampledata/ratings.csv",
+                               dataDir + "/modeldata/item2vecEmb.csv",
+                               dataDir + "/modeldata/userEmb.csv",
+                                "i2vEmb", "uEmb");
+        
 
         //create server context
         ServletContextHandler context = new ServletContextHandler();
